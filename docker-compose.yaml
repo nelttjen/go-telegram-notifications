@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  postgres:
+    image: "postgres:15.4-alpine3.18"
+    container_name: "remanga-prostgres-db"
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgres
+
+
+volumes:
+  postgres_data:

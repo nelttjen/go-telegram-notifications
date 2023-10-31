@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package internal.rpc;
+
+import "google/protobuf/struct.proto";
+
+option go_package = ".;rpc";
+
+service NotificationsService {
+    rpc AddNotificationsToQueue (AddNotificationsToQueueRequest) returns (AddNotificationsToQueueResponse);
+    rpc GetTelegramNotificationStatistics (GetTelegramNotificationStatisticsRequest) returns (GetTelegramNotificationStatisticsResponse);
+}
+
+message MessageSettings {
+  uint64 telegram_user_id = 1;
+  string telegram_bot_host = 2;
+}
+
+message AddNotificationsToQueueRequest {
+  repeated MessageSettings message_settings = 1;
+  string text = 2;
+}
+
+message AddNotificationsToQueueResponse {
+  uint64 request_id = 1;
+  bool success = 2;
+}
+
+message GetTelegramNotificationStatisticsRequest {
+  uint64 request_id = 1;
+}
+
+message GetTelegramNotificationStatisticsResponse {
+  bool processed = 1;
+  uint32 total_messages = 2;
+  uint32 sent_messages = 3;
+  uint32 processed_messages = 4;
+  uint32 queue_messages = 5;
+}

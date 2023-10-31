@@ -1,0 +1,35 @@
+{
+  "handlers": {
+    "console": {
+      "out": "stdout"
+    },
+    "info_file": {
+      "out": "file",
+      "filename": "info.log"
+    },
+    "error_file": {
+      "out": "file",
+      "filename": "error.log"
+    },
+    "trace_file": {
+      "out": "file",
+      "filename": "traceback.log"
+    }
+  },
+  "loggers": {
+    "debug": {
+      "handlers": ["console", "trace_file"],
+      "level": "TRACE"
+    },
+    "info": {
+      "handlers": ["console", "info_file"],
+      "level": "INFO"
+    },
+    "error": {
+      "handlers": ["error_file"],
+      "level": "ERROR"
+    }
+  },
+  "init_loggers_dev": ["debug", "info", "error"],
+  "init_loggers_prod": ["info", "error"]
+}
