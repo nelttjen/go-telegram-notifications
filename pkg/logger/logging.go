@@ -8,7 +8,7 @@ import (
 	"io"
 	"os"
 
-	appConfig "remanga-notifications-bot/internal/config"
+	appConfig "notifications-bot/internal/config"
 )
 
 type notInitializedError struct {

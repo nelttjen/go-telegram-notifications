@@ -5,9 +5,9 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"remanga-notifications-bot/internal/config"
-	"remanga-notifications-bot/pkg/env"
-	"remanga-notifications-bot/pkg/logger"
+	"notifications-bot/internal/config"
+	"notifications-bot/pkg/env"
+	"notifications-bot/pkg/logger"
 )
 
 var _ Connection = &postgresConnection{}
@@ -25,6 +25,7 @@ type postgresConnection struct {
 
 func NewPostgresConnection() Connection {
 	newEnv := env.NewEnv(config.EnvRoot)
+
 	host, _ := newEnv.GetEnvAsString("POSTGRES_HOST", "127.0.0.1")
 	port, _ := newEnv.GetEnvAsInt("POSTGRES_PORT", 5432)
 	user, _ := newEnv.GetEnvAsString("POSTGRES_USER", "postgres")

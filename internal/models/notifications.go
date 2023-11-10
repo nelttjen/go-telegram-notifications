@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type TelegramMessageNotification struct {
 	ID   uint64 `gorm:"primary_key"`
 	Text string `gorm:"not null"`
@@ -14,4 +16,10 @@ type TelegramNotification struct {
 	Text      *TelegramMessageNotification `gorm:"foreignkey:TextID"`
 	Processed bool                         `gorm:"not null;default:false"`
 	Sent      bool                         `gorm:"not null;default:false"`
+}
+
+type BannedChats struct {
+	ID     uint64    `gorm:"primary_key"`
+	ChatID uint64    `gorm:"not null"`
+	Until  time.Time `gorm:"not null"`
 }
