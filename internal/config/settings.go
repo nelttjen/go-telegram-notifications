@@ -14,8 +14,11 @@ var (
 	Development = "dev"
 	Testing     = "test"
 
-	Protocol = "tcp"
-	Port     = ":55000"
+	Protocol                   = "tcp"
+	Port                       = ":55000"
+	NotificationPerSecondLimit = 25
+	NotificationBatchSize      = 5000
+	BannedChatDays             = 7
 )
 
 var Environment = Development

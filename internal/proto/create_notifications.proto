@@ -24,6 +24,7 @@ message AddNotificationsToQueueRequest {
 message AddNotificationsToQueueResponse {
   uint64 request_id = 1;
   bool success = 2;
+  string message = 3;
 }
 
 message GetTelegramNotificationStatisticsRequest {

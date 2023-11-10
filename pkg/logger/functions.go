@@ -3,7 +3,7 @@ package logger
 import (
 	"fmt"
 	"github.com/sirupsen/logrus"
-	appConfig "remanga-notifications-bot/internal/config"
+	appConfig "notifications-bot/internal/config"
 )
 
 func GetLogger(name string) (*Logger, error) {
