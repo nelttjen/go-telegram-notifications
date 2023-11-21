@@ -12,6 +12,17 @@ services:
       - .env
     volumes:
       - postgres_data:/var/lib/postgres
+  application:
+    container_name: "notifications-application"
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - .:/app
+    expose:
+      - "55000"
+    ports:
+      - "55000:55000"
 
 
 volumes:
