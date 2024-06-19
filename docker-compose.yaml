@@ -12,6 +12,12 @@ services:
       - .env
     volumes:
       - postgres_data:/var/lib/postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U admin -d development'" ]
+      interval: 2s
+      timeout: 3s
+      retries: 5
+
   application:
     container_name: "notifications-application"
     build:
@@ -23,6 +29,9 @@ services:
       - "55000"
     ports:
       - "55000:55000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 
 volumes:
